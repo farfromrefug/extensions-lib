@@ -15,6 +15,12 @@ interface SManga {
 
     var genre: String?
 
+    var tags: String?
+
+    var moods: String?
+
+    var language: String?
+
     var status: Int
 
     var thumbnail_url: String?

@@ -15,6 +15,16 @@ interface SChapter {
 
     var thumbnail_url: String?
 
+    var description: String?
+
+    var language: String?
+
+    var genre: String?
+
+    var tags: String?
+
+    var moods: String?
+
     companion object {
         fun create(): SChapter {
             throw Exception("Stub!")
