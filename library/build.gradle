@@ -49,8 +49,15 @@ project.afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                artifact androidSourcesJar
+                artifact(androidSourcesJar) {
+                    builtBy androidSourcesJar
+                }
             }
         }
+    }
+
+    // optional extra safety: ensure metadata generation waits for sources jar
+    tasks.named("generateMetadataFileForReleasePublication") {
+        dependsOn androidSourcesJar
     }
 }
