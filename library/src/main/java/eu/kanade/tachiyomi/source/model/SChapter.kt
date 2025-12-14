@@ -13,6 +13,8 @@ interface SChapter {
 
     var scanlator: String?
 
+    var thumbnail_url: String?
+
     companion object {
         fun create(): SChapter {
             throw Exception("Stub!")
