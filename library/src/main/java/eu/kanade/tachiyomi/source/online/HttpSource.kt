@@ -175,12 +175,36 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
+     * Returns whether the source uses pagination for chapter lists.
+     * When true, [chapterListRequest] and [chapterListParse] will be called with a page parameter.
+     *
+     * Override this and return true to enable pagination support.
+     *
+     * @return true if chapter list uses pagination, false otherwise
+     */
+    protected open fun supportsChapterListPagination(): Boolean = false
+
+    /**
      * Returns the request for updating the chapter list. Override only if it's needed to override
      * the url, send different headers or request method like POST.
      *
      * @param manga the manga to look for chapters.
      */
     open protected fun chapterListRequest(manga: SManga): Request {
+        return chapterListRequest(manga, 1)
+    }
+
+        /**
+     * Returns the request for updating the chapter list. Override only if it's needed to override
+     * the url, send different headers or request method like POST.
+     *
+     * When [supportsChapterListPagination] returns true, the page parameter will be provided
+     * for paginated sources (1-indexed). For non-paginated sources, page will be 1.
+     *
+     * @param manga the manga to look for chapters.
+     * @param page the page number to retrieve (1-indexed), only used when pagination is enabled.
+     */
+    open protected fun chapterListRequest(manga: SManga, page: Int = 1): Request {
         throw Exception("Stub!")
     }
 
@@ -192,6 +216,21 @@ abstract class HttpSource : CatalogueSource {
     protected abstract fun chapterListParse(response: Response): List<SChapter>
 
     /**
+     * Parses the response from the site and returns a list of chapters.
+     *
+     * When [supportsChapterListPagination] returns true, return only the chapters for the requested page.
+     * The hasNextPage parameter should indicate if there are more pages to load.
+     *
+     * @param response the response from the site.
+     * @param hasNextPage output parameter to indicate if there are more pages (only used with pagination).
+     * @return the list of chapters for this page.
+     */
+    protected open fun chapterListParse(response: Response, hasNextPage: MutableList<Boolean>? = null): List<SChapter> {
+        // For backward compatibility, call the abstract method without hasNextPage
+        return chapterListParse(response)
+    }
+
+        /**
      * Returns an observable with the page list for a chapter.
      *
      * @param chapter the chapter whose page list has to be fetched.
