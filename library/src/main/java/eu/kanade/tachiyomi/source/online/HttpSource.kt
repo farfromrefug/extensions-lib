@@ -225,7 +225,7 @@ abstract class HttpSource : CatalogueSource {
      * @param hasNextPage output parameter to indicate if there are more pages (only used with pagination).
      * @return the list of chapters for this page.
      */
-    protected open fun chapterListParse(response: Response, hasNextPage: MutableList<Boolean>? = null): List<SChapter> {
+    protected open fun chapterListParse(response: Response, hasNextPage: MutableList<Boolean>): List<SChapter> {
         // For backward compatibility, call the abstract method without hasNextPage
         return chapterListParse(response)
     }
