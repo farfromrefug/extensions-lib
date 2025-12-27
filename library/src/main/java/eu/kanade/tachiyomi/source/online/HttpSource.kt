@@ -368,7 +368,7 @@ abstract class HttpSource : CatalogueSource {
     override fun getFilterList(): FilterList {
         throw Exception("Stub!")
     }
-    
+
     /**
      * Returns the direct download URL for a chapter archive (CBZ).
      * If implemented and returns a valid URL, the downloader will download the chapter as a CBZ file directly
@@ -383,4 +383,17 @@ abstract class HttpSource : CatalogueSource {
      * @return the download URL for the chapter archive, or null if direct archive download is not supported.
      */
     open fun getChapterArchiveUrl(chapter: SChapter): String? = null
+
+    /**
+     * Returns the request to download a chapter archive (CBZ).
+     * The URL should point to a valid CBZ/ZIP archive containing the chapter images.
+     * The archive may optionally include a ComicInfo.xml file for metadata.
+     *
+     * @since extensions-lib 1.6
+     * @param url the URL to download.
+     * @param chapter the chapter to get the download URL for.
+     * @return the request
+     */
+    open fun getChapterArchiveDownloadRequest(url: String, chapter: SChapter): Request? = null
+
 }
