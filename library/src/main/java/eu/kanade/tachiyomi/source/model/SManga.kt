@@ -29,6 +29,8 @@ interface SManga {
 
     var initialized: Boolean
 
+    var metadata: String?
+
     companion object {
         const val UNKNOWN = 0
         const val ONGOING = 1
