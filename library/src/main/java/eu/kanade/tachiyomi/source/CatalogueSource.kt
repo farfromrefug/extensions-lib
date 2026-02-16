@@ -38,6 +38,10 @@ interface CatalogueSource : Source {
         throw UnsupportedOperationException("getHomePage is not supported by this source")
     }
 
+    suspend fun getHomeSectionManga(sectionId: String, page: Int): MangasPage {
+        throw UnsupportedOperationException("getHomeSectionManga is not supported by this source")
+    }
+
     /**
      * Returns an observable containing a page with a list of manga.
      *
