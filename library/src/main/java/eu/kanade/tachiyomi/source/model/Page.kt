@@ -7,5 +7,6 @@ class Page(
         val index: Int,
         val url: String = "",
         var imageUrl: String? = null,
-        var uri: Uri? = null
+        var uri: Uri? = null,
+        var metadata: String? = null
 )
