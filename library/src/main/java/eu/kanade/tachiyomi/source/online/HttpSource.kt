@@ -302,6 +302,10 @@ abstract class HttpSource : CatalogueSource {
         throw Exception("Stub!")
     }
 
+    open suspend fun getImage(page: Page): Response {
+        throw Exception("Stub!")
+    }
+
     /**
      * Assigns the url of the chapter without the scheme and domain. It saves some redundancy from
      * database and the urls could still work after a domain change.
