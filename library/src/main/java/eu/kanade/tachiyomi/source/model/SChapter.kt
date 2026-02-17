@@ -25,6 +25,8 @@ interface SChapter {
 
     var moods: String?
 
+    var total_pages: Long?
+
     companion object {
         fun create(): SChapter {
             throw Exception("Stub!")
