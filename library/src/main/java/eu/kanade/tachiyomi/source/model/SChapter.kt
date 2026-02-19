@@ -27,6 +27,8 @@ interface SChapter {
 
     var total_pages: Long?
 
+    var banners: String?
+
     companion object {
         fun create(): SChapter {
             throw Exception("Stub!")
