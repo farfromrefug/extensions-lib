@@ -1,4 +1,5 @@
 package eu.kanade.tachiyomi.util
+import eu.kanade.tachiyomi.source.model.ChapterTag
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
@@ -8,12 +9,6 @@ private data class SerializedChapterTag(
     val text: String,
     val color: Long,
 )
-
-data class ChapterTag(
-    val text: String,
-    val color: Long,
-)
-
 
 /**
  * Parses a JSON string into a list of ChapterTag objects.
