@@ -1,5 +1,4 @@
 package tachiyomi.domain.chapter.model
-import eu.kanade.tachiyomi.source.model.ChapterTag
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
