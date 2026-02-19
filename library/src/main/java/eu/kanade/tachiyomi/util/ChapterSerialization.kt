@@ -1,8 +1,7 @@
-package eu.kanade.tachiyomi.util
+package tachiyomi.domain.chapter.model
 import eu.kanade.tachiyomi.source.model.ChapterTag
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.decodeFromString
 
 @Serializable
 private data class SerializedChapterTag(
