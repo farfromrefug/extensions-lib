@@ -1,4 +1,4 @@
-package eu.kanade.tachiyomi.source.model
+package tachiyomi.domain.chapter.model
 
 data class ChapterTag(
     val text: String,
